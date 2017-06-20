@@ -1,0 +1,156 @@
+name: Menu Secundario
+description: Muestra un menu totalmente estilizado ideal para ubicarlo en el pié de página.
+type: particle
+icon: fa fa-chevron-circle-right
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the menu particle.
+      default: true
+
+    separador01:
+      type: separator.note
+      class: alert alert-info
+      content: '<h4>Ajustes Generales</h4>'
+
+    titulo:
+      type: input.text
+      label: Título
+      description: 'Título de la partícula'
+
+    etiquetatitulo:
+      type: select.select
+      label: Etiqueta del título
+      description: Define la etiqueta HTML que envolverá el título.
+      placeholder: 'h3'
+      default: h3
+      options:
+        h1: h1
+        h2: h2
+        h3: h3
+        h4: h4
+        h5: h5
+        h6: h6
+
+    clasecsstitulo:
+      type: input.text
+      label: Clase CSS del título
+      description: 'La clase CSS para el título de la partícula'
+
+    
+    separador02:
+      type: separator.note
+      class: alert alert-info
+      content: '<h4>Ajustes del menú</h4>'
+
+    menu:
+      type: menu.list
+      label: Elija un Menu
+      description: Seleccione un menu a mostrar.
+      default: ''
+      selectize:
+          allowEmptyOption: true
+      options:
+        '': Use Default Menu
+        '-active-': Use Active Menu
+
+    colordefondo:
+      type: input.radios
+      label: Color de fondo
+      description: Define el color del fondo donde se mostrar este menú. Esto ayudará a la partícula a definir los colores iniciales de los enlaces.
+      default: g-menu-oscuro
+      options:        
+        g-menu-oscuro: Oscuro
+        g-menu-claro: Claro
+
+    orientacionitems:
+      type: input.radios
+      label: Orientación Items
+      description: ¿Cómo deseas mostrar los Items de menús?
+      default: g-menu-dis-vertical
+      options:
+        g-menu-dis-vertical: Vertical
+        g-menu-dis-horizontal: Horizontal   
+
+    alineacionhorizontal:
+      type: select.select
+      label: Alineación horizontal
+      description: Define la alineación horizontal del menú.
+      placeholder: 'Seleccionar'
+      default: g-menu-align-left 
+      options:
+        g-menu-align-left: Izquierda
+        g-menu-align-center: Centrado
+        g-menu-align-right: Derecha       
+
+
+    tipodeicono:
+      type: select.select
+      label: Tipo de icono
+      description: Define el tipo de íconoque se mostrará al lado del enlace.
+      default: iconogenerico
+      options:
+        iconogenerico: Icono genérico
+        definidomenu: Definido en el Editor de Menús        
+        sinicono: Sin icono
+
+    iconogen:
+      type: input.icon
+      label: Icono genérico
+      description: Puede definir un icono que acompañer a todos los enlaces.
+      default: fa fa-angle-right
+
+    separador03:
+      type: separator.note
+      class: alert alert-info
+      content: '<h4>Ajustes avanzados</h4>'
+
+    espacioiconos:
+      type: input.text
+      label: Espacio entre Items
+      description: Define el espaciado entre  items
+      placeholder: '.5rem'
+
+    coloricono:
+      type: input.colorpicker
+      label: Color del icono
+
+    colorenlace:
+      type: input.colorpicker
+      label: Color de enlace
+
+
+    bordeseparador:
+      type: input.checkbox
+      label: ¿Borde separador?
+      description: Mostrar un borde para separar los enlaces.
+      default: false
+
+    enlacenegrita:
+      type: input.checkbox
+      label: ¿Texto en Negrita?
+      description: Mostrar el texto del enlace en negrita.
+      default: false
+
+    efecto:
+      type: select.select
+      label: Efecto
+      description: Elija un efecto que se mostrará cuando se coloque el cursos sobre los enlaces.
+      placeholder: 'Sin efecto'
+      default: g-menu-sinefecto
+      options:
+          g-menu-sinefecto: Sin efecto
+          g-menu-efecto1: Efecto 1
+          g-menu-efecto2: Efecto 2
+          g-menu-efecto3: Efecto 3
+          g-menu-efecto4: Efecto 4
+
+

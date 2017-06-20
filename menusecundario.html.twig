@@ -1,0 +1,59 @@
+{% try %}
+{% set menu = gantry.menu.instance(particle) %}
+
+{% catch %}
+<div class="alert alert-error">{{ e.getMessage }}</div>
+{% endtry %}
+
+{%- if particle.titulo -%}
+        <{{ particle.etiquetatitulo }} {% if particle.clasecsstitulo %} class="{{ particle.clasecsstitulo }}" {% endif %}>{{ particle.titulo }}</{{ particle.etiquetatitulo }}> 
+{%- endif -%}
+
+{% macro displayItem(item, menu, context, dropdown_type, iconogen, tipoicono, espacioiconos, coloricono, orientacionitems, colorenlace) %}
+    {% import _self as SELF %}
+        {% set title = item.icon_only ? ' title="' ~ item.title|e ~ '"' %}
+        {% set active = menu.isActive(item) ? ' active' %}
+        {% set target = item.target != '_self' ? ' target="' ~ item.target|e ~ '"' %}
+
+        <li class="item-{{ item.id|e }} {{- item.class|e|default('')-}} {{ active|raw }}" title="{{ item.title|e }}">
+            <a href="{{ item.url|e }}" {{ target|raw }}
+            {%- if espacioiconos or colorenlace -%}style="
+                {%- if orientacionitems=='g-menu-dis-horizontal'-%}  padding:.5rem {{ espacioiconos }};{%- endif -%} 
+                {%- if orientacionitems=='g-menu-dis-vertical'-%} padding:{{ espacioiconos }} 0;{%- endif -%}
+                {%- if colorenlace -%} color:{{ colorenlace }};{%- endif -%}"
+            {%- endif -%}>
+                {%- if tipoicono == 'iconogenerico' -%}
+                <i class="{{ iconogen }}" {%- if coloricono -%}style="color:{{ coloricono }};"{%- endif -%}></i>
+                {%- elseif tipoicono == 'definidomenu'-%}
+                <i class="{{ item.icon|e }}" {%- if coloricono -%}style="color:{{ coloricono }};"{%- endif -%}></i>     
+                {%- endif -%}
+               {{- item.title|e -}}
+            </a>
+        </li>
+{% endmacro %}
+
+
+{% macro displayItems(items, menu, iconogen, tipoicono,espacioiconos, colordefondo, coloricono, orientacionitems, colorenlace, context, dropdown_type) %}
+    {% import _self as SELF %}
+    {% for item in items %}
+        {% if item.level == 1 %}{% set dropdown_type = item.dropdown %}{% endif %}
+        {{ SELF.displayItem(item, menu, context, dropdown_type, iconogen, tipoicono, espacioiconos, coloricono, orientacionitems, colorenlace) }}
+       
+    {% endfor %}
+{% endmacro %}
+
+{% if menu.root.count() %}
+
+<nav class="g-menu-footer {{ particle.colordefondo|e }} {{ particle.orientacionitems|e }}{% if particle.bordeseparador %} gmenu-conborder{% endif %} {{ particle.alineacionhorizontal|e }} {{ particle.efecto|e }}{% if particle.enlacenegrita %} g-menu-enlacenegrita{% endif %}" role="navigation" >
+    <ul class="g-menu-toplevel">
+        {% set tipoicono = particle.tipodeicono %}
+        {% set iconogen = particle.iconogen %}
+        {% set espacioiconos = particle.espacioiconos %}
+        {% set colordefondo = particle.colordefondo %}
+        {% set coloricono = particle.coloricono %}
+        {% set orientacionitems = particle.orientacionitems %}
+        {% set colorenlace = particle.colorenlace %}
+        {{ _self.displayItems(menu.root, menu, iconogen, tipoicono, espacioiconos, colordefondo, coloricono, orientacionitems, colorenlace, _context ) }}
+    </ul>
+</nav>
+{% endif %}

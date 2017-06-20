@@ -1,0 +1,178 @@
+/*Estilos  Partícula Menu Footer*/
+.g-menu-footer{
+    ul, li{
+    padding: 0;
+    margin:0;
+    list-style: none;
+    position: relative;
+    }
+
+    /*----Orientación Items----*/     
+    &.g-menu-dis-vertical ul li{ 
+    display: block;
+        a{
+         padding: .5rem 0;   
+        }
+        &:first-child a{
+            padding-top:0 !important;
+        }     
+    }
+
+    &.g-menu-dis-horizontal ul li{
+    display: inline-block;
+        a{
+         padding:.5rem;   
+        }       
+    } 
+
+    /*----Orientación Horizontal Items----*/ 
+    &.g-menu-align-left{
+        text-align: left;
+    }
+    &.g-menu-align-center{
+        text-align: center;
+    }
+    &.g-menu-align-right{
+        text-align:right;
+    }
+    /*----Texto en negrita----*/
+    &.g-menu-enlacenegrita ul li a{
+        font-weight: bold;
+    }
+
+    a{    
+    @include display(inline-flex);
+    @include align-items(center);
+    text-decoration: none;    
+    line-height: 1;
+    position: relative;
+    top: -.15rem;    
+    @include transition(all 0.3s ease);
+         i{
+        @include display(flex);
+        padding: 0;
+        margin-right: .6rem;
+        border: none;
+        text-decoration: none;
+        border-radius: 0;       
+        text-shadow: none; 
+        position: relative;
+        @include transition(all 0.3s ease);
+        }
+    }
+
+    /*Color de enlaces*/
+    &.g-menu-oscuro ul li a{ color: #d8d8d8;}
+    &.g-menu-oscuro ul li a:hover, &.g-menu-oscuro ul li.active a { color: #fff;}
+    &.g-menu-claro ul li a{color: #373838; }
+    &.g-menu-claro ul li a:hover, &.g-menu-claro ul li.active a { color: #1f1f1f;}
+    
+    /*Color de bordes vertical */
+    &.g-menu-oscuro.gmenu-conborder.g-menu-dis-vertical ul li{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.31);
+    box-shadow: 0 -1px rgba(255, 255, 255, 0.15) inset;  
+    }
+
+    &.g-menu-claro.gmenu-conborder.g-menu-dis-vertical ul li{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15); 
+    }
+
+    /*Color de bordes Horizontal */
+    &.g-menu-oscuro.gmenu-conborder.g-menu-dis-horizontal ul li{
+    border-right: 1px solid rgba(0, 0, 0, 0.31);
+    box-shadow: 1px 0 rgba(255, 255, 255, 0.15);  
+    }
+    &.g-menu-oscuro.gmenu-conborder.g-menu-dis-horizontal ul li:last-child{
+    border-right: 0;
+    box-shadow:none;
+    }
+
+    /*Efecto 1*/
+    &.g-menu-efecto1 ul li a .fa{
+    position: relative;
+    left: 0;
+    @include transition(all .5s ease);
+    }
+    &.g-menu-efecto1 ul li:hover a .fa{
+    left: .2rem;
+    }
+    /*Efecto 2*/
+    &.g-menu-efecto2 ul li:hover a .fa{
+    margin-right: 1rem;
+    }
+    
+    /*Efecto 3*/
+    &.g-menu-efecto3 ul li a .fa{
+    @include transition(all 0.2s ease-out);
+    }
+
+    &.g-menu-efecto3 ul li:hover a .fa{
+    @include transform(rotateY(180deg));
+    @include transform-origin(left center);
+    left: 2px;
+    }
+
+     /*Efecto 4*/
+    &.g-menu-efecto4.g-menu-dis-horizontal ul li a{
+        margin: 0 .2rem;
+     }
+    &.g-menu-efecto4.g-menu-dis-horizontal ul li:first-child a{
+        margin-left: 0;
+     }
+    &.g-menu-efecto4.g-menu-dis-horizontal ul li:last-child a{
+        margin-right: 0;
+     }
+    &.g-menu-efecto4 ul li a{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: relative;
+    @include transition(all 0.3s ease);
+    }
+    &.g-menu-efecto4 ul li {
+    border-right: none !important; 
+    box-shadow:  none !important; 
+    border-bottom: none !important;
+    box-shadow:  none !important; 
+    }
+
+
+    &.g-menu-efecto4 ul li a:after {
+    content: "";
+    position: absolute;
+    bottom: -.3rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 1px;
+    background: #d8d8d8;    
+    @include transition(all 0.2s);
+    }
+     &.g-menu-efecto4.g-menu-claro ul li a:after {
+    background: #373838;
+    }
+
+    &.g-menu-efecto4 ul li:hover a:after{
+    width: 100%;
+    } 
+
+
+    /*Item de menu Activo*/
+     nav[class*="g-menu-efecto"] ul li.active a .fa {
+        left: .3rem !important;
+    }
+    
+}
+
+@include breakpoint(mobile-only) {
+    .g-menu-footer{
+        ul li {
+        border-right: 0 !important;
+        box-shadow: none !important;
+        display: block !important;
+            a{
+               padding: .7rem 0 !important;  
+            }
+        }    
+    }
+}
