@@ -1,6 +1,6 @@
-# Partícula "Encabezado"
+# Partícula "Menu secundario"
 Partícula para Gantry 5 que te permite incluir Títulos y Subtítulos  dentro de tu diseño. Proporciona múltiples opciones de configuracion. 
-![particula-encabezado](https://user-images.githubusercontent.com/9434043/26898993-5c43825c-4b93-11e7-86ea-ac0111f14b0e.png)
+![menu-secundario](https://user-images.githubusercontent.com/9434043/27343549-e8d31164-55a8-11e7-804d-8f3b9266e3c7.jpg)
 
 
 Instalación
